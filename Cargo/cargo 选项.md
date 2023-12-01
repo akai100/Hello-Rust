@@ -8,3 +8,6 @@ build-std = ["core", "compiler_builtins"]
 build-std-features = ["compiler-builtins-mem"]
 ```
 通过 build-std-features 配置项设置为 ["compiler-builtins-mem"] 来启动 compiler_builtins 的特性。
+
+# build
++ taget
