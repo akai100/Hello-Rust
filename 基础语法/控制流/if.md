@@ -13,4 +13,7 @@ if condition1 {
     ...
 }
 ```
-## 
+## 配合 let 使用
+```rust
+let number = if condition { 5 } else { 6 };
+```
