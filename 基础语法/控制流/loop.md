@@ -8,6 +8,7 @@ loop {
 ```
 
 ## loop 返回值
+```rust
 let mut count = 1;
 let mut sum = 0;
 let sum1to100 = loop {
@@ -17,3 +18,4 @@ let sum1to100 = loop {
     }
     count += 1;
 };
+```
