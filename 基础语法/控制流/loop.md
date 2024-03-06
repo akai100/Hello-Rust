@@ -7,3 +7,13 @@ loop {
 }
 ```
 
+## loop 返回值
+let mut count = 1;
+let mut sum = 0;
+let sum1to100 = loop {
+    if count > 100 {
+        sum += count;
+        break sum;
+    }
+    count += 1;
+};
