@@ -8,3 +8,54 @@ pub trait Iterator {
     fn next(&mut self) -> Option<Self::Item>;
 }
 ```
+Item 是一个占位符，
+
+## 默认泛型类型参数和运算符重载
+```rust
+trait Add<Rhs=Self> {
+    type Output;
+
+    fn add(self, rhs: Rhs) -> Self::Output;
+}
+```
+## 消除歧义的完全限定语法：调用同名方法
+rust 运行实现两个 trait，即使这两个 trait 有相同名称、相同参数的方法。
+```rust
+trait Pilot {
+    fn fly(&self);
+}
+
+trait Wizard {
+    fn fly(&self);
+}
+
+struct Human;
+
+impl Pilot for Human {
+    fn fly(&self) {
+        println!("This is your captain speaking.");
+    }
+}
+
+impl Wizard for Human {
+    fn fly(&self) {
+        println!("Up!");
+    }
+}
+
+impl Human {
+    fn fly(&self) {
+        println!("*waving arms furiously*");
+    }
+}
+```
+我们在调用时，怎么指定调用那个函数:
+```rust
+fn main() {
+    let person = Human;
+    Pilot::fly(&person);
+    Wizard::fly(&person);
+    person.fly();
+}
+```
+``` person.fly() ``` 默认调用为结构体定义的方法。
